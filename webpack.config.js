@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -36,7 +37,15 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
+      inject: true
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public', to: '' },
+        { from: 'images', to: 'images' },
+        { from: 'css', to: 'css' }
+      ]
     })
   ]
 };
