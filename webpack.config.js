@@ -7,8 +7,9 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: 'js/[name].[contenthash].js',
     publicPath: '/',
+    clean: true
   },
   module: {
     rules: [
@@ -25,7 +26,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -47,7 +48,7 @@ module.exports = {
   devtool: 'source-map',
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].[contenthash].css'
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
