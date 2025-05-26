@@ -13,12 +13,21 @@ button, .button, a[href].bg-red-600 {
 }
 
 @layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   html {
     scroll-behavior: smooth;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   
   body {
-    @apply font-sans text-black bg-white;
+    @apply font-sans text-black bg-white min-h-screen;
+    touch-action: pan-y pinch-zoom;
+    -webkit-text-size-adjust: 100%;
   }
   
   h1, h2, h3, h4, h5, h6 {

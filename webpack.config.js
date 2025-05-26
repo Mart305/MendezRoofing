@@ -35,7 +35,11 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1
+              importLoaders: 1,
+              modules: {
+                auto: true,
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              }
             }
           },
           {
@@ -43,8 +47,9 @@ module.exports = {
             options: {
               postcssOptions: {
                 plugins: [
-                  'tailwindcss',
-                  'autoprefixer',
+                  require('tailwindcss'),
+                  require('autoprefixer'),
+                  require('postcss-preset-env')({ stage: 1 })
                 ]
               }
             }

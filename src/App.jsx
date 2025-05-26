@@ -18,6 +18,31 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Enable passive touch listeners for better scrolling performance
+    const supportsPassive = false;
+    try {
+      window.addEventListener("test", null, {
+        get passive() {
+          supportsPassive = true;
+          return true;
+        }
+      });
+    } catch (e) {}
+
+    const wheelOpt = supportsPassive ? { passive: true } : false;
+    const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+    // Add touch event listeners
+    const touchHandler = (e) => {
+      if (e.target.closest('button') || e.target.closest('a') || e.target.closest('input')) {
+        return; // Don't prevent default on interactive elements
+      }
+    };
+
+    document.addEventListener('touchstart', touchHandler, wheelOpt);
+    document.addEventListener('touchmove', touchHandler, wheelOpt);
+    document.addEventListener(wheelEvent, touchHandler, wheelOpt);
+
     console.log("App component mounted");
     
     // Force loading to false after a maximum time to prevent infinite loading
@@ -95,6 +120,9 @@ const App = () => {
       clearTimeout(timer);
       clearTimeout(forceLoadingTimeout);
       window.removeEventListener('scroll', handleBackToTopVisibility);
+      document.removeEventListener('touchstart', touchHandler, wheelOpt);
+      document.removeEventListener('touchmove', touchHandler, wheelOpt);
+      document.removeEventListener(wheelEvent, touchHandler, wheelOpt);
     };
   }, []);
 
