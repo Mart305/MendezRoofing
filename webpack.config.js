@@ -38,11 +38,18 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      inject: true
+      inject: true,
+      filename: 'index.html'
     }),
     new CopyPlugin({
       patterns: [
-        { from: 'public', to: '' },
+        { 
+          from: 'public',
+          to: '',
+          globOptions: {
+            ignore: ['**/index.html']
+          }
+        },
         { from: 'images', to: 'images' },
         { from: 'css', to: 'css' }
       ]
