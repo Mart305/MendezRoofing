@@ -16,36 +16,24 @@ import 'swiper/css/pagination';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    // Initialize smooth scrolling behavior
-    document.documentElement.style.scrollBehavior = 'smooth';
-
     console.log("App component mounted");
     
     // Force loading to false after a maximum time to prevent infinite loading
     const forceLoadingTimeout = setTimeout(() => {
-      if (isLoading) {
-        console.log("Force loading complete due to timeout");
-        setIsLoading(false);
-      }
-    }, 5000); // Force loading to complete after 5 seconds maximum
-    
-    // Initialize libraries
-    if (window.AOS) {
-      window.AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-      });
-    }
+      setIsLoading(false);
+    }, 5000);
 
-    // Initialize GSAP ScrollTrigger
-    if (window.gsap && window.ScrollTrigger) {
-      window.gsap.registerPlugin(window.ScrollTrigger);
-    }
-    
+    // Add scroll event listener for back to top button
+    const handleBackToTopVisibility = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setShowBackToTop(scrollTop > 300);
+    };
+
+    window.addEventListener('scroll', handleBackToTopVisibility);
+
     // Initialize smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -64,35 +52,9 @@ const App = () => {
       });
     });
     
-    // Show/hide back-to-top button based on scroll position
-    const handleBackToTopVisibility = () => {
-      const backToTopButton = document.querySelector('.back-to-top');
-      if (backToTopButton) {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('opacity-100');
-          backToTopButton.classList.remove('opacity-0');
-        } else {
-          backToTopButton.classList.add('opacity-0');
-          backToTopButton.classList.remove('opacity-100');
-        }
-      }
-    };
+
     
-    window.addEventListener('scroll', handleBackToTopVisibility);
-    
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-      console.log("Loading complete");
-      
-      // Initialize scroll animations after loading
-      if (window.ScrollTrigger) {
-        window.ScrollTrigger.refresh();
-      }
-      
-      // Initialize back-to-top visibility after loading
-      handleBackToTopVisibility();
-    }, 2000);
+
 
     return () => {
       clearTimeout(timer);
