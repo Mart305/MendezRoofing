@@ -13,31 +13,34 @@ button, .button, a[href].bg-red-600 {
 }
 
 @layer base {
-  html {
+  html, body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: auto;
     position: relative;
+  }
+
+  html {
+    overflow-y: visible;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
   }
   
   body {
     @apply font-sans text-black bg-white min-h-screen;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
-    overflow-y: auto;
-    touch-action: manipulation;
+    overflow-y: visible;
+    touch-action: pan-y pinch-zoom;
     -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
   }
 
   * {
     -webkit-touch-callout: default;
     -webkit-user-select: text;
     user-select: text;
+    box-sizing: border-box;
   }
   
   h1, h2, h3, h4, h5, h6 {
