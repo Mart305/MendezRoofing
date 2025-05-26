@@ -28,7 +28,6 @@ const ParticleBackground = () => {
       // Event listeners
       window.addEventListener('resize', handleResize);
       window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
       
       // Show canvas with fade-in effect
       setTimeout(() => {
@@ -39,7 +38,6 @@ const ParticleBackground = () => {
       return () => {
         window.removeEventListener('resize', handleResize);
         window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('touchmove', handleTouchMove);
         cancelAnimationFrame(animationFrameRef.current);
       };
     } catch (error) {
