@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
-    main: ['./src/index.js', './src/input.css']
+    main: ['./src/index.jsx', './src/input.css']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -63,7 +63,12 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json'],
+    fallback: {
+      "fs": false,
+      "path": false,
+      "os": false
+    }
   },
   devtool: 'source-map',
   plugins: [
