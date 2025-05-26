@@ -3,8 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
-  entry: './src/index.jsx',
+  mode: isProduction ? 'production' : 'development',
+  entry: {
+    main: ['./src/index.jsx', './src/input.css']
+  },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'js/[name].[contenthash].js',
@@ -26,14 +31,24 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1
             }
           },
-          'postcss-loader'
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  'tailwindcss',
+                  'autoprefixer',
+                ]
+              }
+            }
+          }
         ]
       },
       {
