@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
-    main: ['./src/index.jsx', './src/input.css']
+    main: ['./src/index.js', './src/input.css']
   },
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -67,9 +67,6 @@ module.exports = {
   },
   devtool: 'source-map',
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].[contenthash].css'
-    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       inject: true,
@@ -87,6 +84,9 @@ module.exports = {
         { from: 'images', to: 'images' },
         { from: 'css', to: 'css' }
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: isProduction ? 'css/[name].[contenthash].css' : 'css/[name].css'
     })
   ]
 };
