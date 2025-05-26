@@ -96,7 +96,7 @@ const App = () => {
       {/* Chatbot - Always visible regardless of loading state */}
       <ChatbotComponent />
       
-      <div className={`app relative min-h-screen bg-white overflow-visible touch-pan-y ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
+      <div className={`app min-h-screen bg-white ${isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
         {/* Header */}
         <Header />
         
