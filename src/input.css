@@ -13,20 +13,15 @@ button, .button, a[href].bg-red-600 {
 }
 
 @layer base {
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
   html {
     scroll-behavior: smooth;
     height: 100%;
-    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
   
   body {
-    @apply font-sans text-black bg-white min-h-screen;
-    touch-action: pan-y pinch-zoom;
+    @apply font-sans text-black bg-white min-h-screen overflow-x-hidden;
+    overscroll-behavior-y: none;
     -webkit-text-size-adjust: 100%;
   }
   
