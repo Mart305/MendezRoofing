@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="4" fill="#1a5276"/>
+  
+  <!-- Roof Icon -->
+  <polygon points="5,14 16,6 27,14 27,16 5,16" fill="#ffffff"/>
+  
+  <!-- House Base -->
+  <rect x="8" y="16" width="16" height="10" fill="#ffffff"/>
+  
+  <!-- Accent -->
+  <rect x="8" y="26" width="16" height="2" fill="#e67e22"/>
+</svg>

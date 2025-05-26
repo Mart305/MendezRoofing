@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mendez Roofing - Premium Roofing Services</title>
+    <meta name="description" content="Mendez Roofing provides top-quality roofing services for residential and commercial properties. Get a free quote today!">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <!-- Swiper Slider -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    
+    <!-- Global fixes -->
+    <style>
+      /* Fix for button text color */
+      .bg-red-600, [class*="bg-red-"] {
+        color: white !important;
+      }
+      button.bg-red-600, a.bg-red-600 {
+        color: white !important;
+      }
+      /* Fix for white buttons */
+      .bg-white, button.bg-white, a.bg-white {
+        color: #111 !important;
+      }
+      /* Fix for buttons with hover states */
+      button:not(.text-white), a[href]:not(.text-white) {
+        color: inherit !important;
+      }
+      
+      /* Ensure white text stays white */
+      .text-white {
+        color: white !important;
+      }
+      
+      /* Swiper navigation fixes */
+      .swiper-button-next, .swiper-button-prev {
+        background-color: white !important;
+        color: #dc2626 !important;
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+        opacity: 1 !important;
+      }
+      .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 18px !important;
+        font-weight: bold !important;
+      }
+      /* Fix for Swiper navigation positioning */
+      .swiper-button-next {
+        right: 10px !important;
+      }
+      .swiper-button-prev {
+        left: 10px !important;
+      }
+      /* Make sure navigation is visible */
+      .testimonials-swiper .swiper-button-next,
+      .testimonials-swiper .swiper-button-prev {
+        display: flex !important;
+        visibility: visible !important;
+      }
+      /* Additional fixes to ensure the arrows are visible */
+      .swiper-button-next, .swiper-button-prev {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      /* Fix for pagination bullets */
+      .swiper-pagination-bullet-active {
+        background-color: #dc2626 !important;
+      }
+      
+      /* Fix for chatbot visibility */
+      .chatbot-button {
+        position: fixed !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        width: 80px !important;
+        height: 80px !important;
+        border-radius: 50% !important;
+        background-color: #dc2626 !important;
+        color: white !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: 3px solid white !important;
+        cursor: pointer !important;
+      }
+    </style>
+    
+    <style>
+        /* Fallback content styles */
+        .fallback-content {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body.js-loading .fallback-content {
+            display: block;
+        }
+        
+        /* Initial loading animation */
+        .initial-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        
+        body:not(.js-loading) .initial-loader {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(225, 6, 0, 0.2);
+            border-top: 5px solid #e10600;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loader-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .loader-logo span {
+            color: #e10600;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="js-loading">
+    <!-- Initial loader -->
+    <div class="initial-loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-logo">Mendez Roofing <span>loading...</span></div>
+    </div>
+    
+    <!-- Root element for React -->
+    <div id="root"></div>
+    
+    <!-- Fallback content if React doesn't load -->
+    <div class="fallback-content">
+        <h1 class="text-3xl font-bold mb-4">Mendez Roofing</h1>
+        <p class="mb-4">We're experiencing some technical difficulties. Please refresh the page or try again later.</p>
+        <button onclick="window.location.reload()" class="bg-primary text-white px-4 py-2 rounded">Refresh Page</button>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <!-- Swiper Slider -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Debug script -->
+    <script>
+        console.log('Page loaded, waiting for React...');
+        
+        // Remove loading class after 5 seconds if React hasn't loaded
+        setTimeout(function() {
+            if (document.body.classList.contains('js-loading')) {
+                console.error('React failed to load within 5 seconds');
+            }
+        }, 5000);
+        
+        // Remove loading class when React loads
+        window.onload = function() {
+            console.log('Window loaded');
+            setTimeout(function() {
+                document.body.classList.remove('js-loading');
+            }, 1000);
+        };
+    </script>
+    
+    <!-- React App Bundle -->
+    <script src="dist/bundle.js"></script>
+</body>
+</html>

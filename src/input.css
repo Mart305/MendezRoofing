@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom button styles to ensure text is always visible */
+.btn-primary {
+  @apply bg-red-600 text-white font-medium rounded-lg shadow-md hover:bg-red-700 transition-all duration-300;
+}
+
+/* Global styles for all buttons */
+button, .button, a[href].bg-red-600 {
+  @apply text-white;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans text-black bg-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary;
+  }
+  
+  .btn-outline {
+    @apply border-2 hover:text-white;
+  }
+  
+  .btn-outline-primary {
+    @apply border-primary text-primary hover:bg-primary;
+  }
+  
+  .btn-outline-secondary {
+    @apply border-secondary text-secondary hover:bg-secondary;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .section-title {
+    @apply text-center mb-12;
+  }
+  
+  .section-subtitle {
+    @apply text-primary text-lg font-medium mb-2 block;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-custom overflow-hidden transition-all duration-300 hover:shadow-custom-lg;
+  }
+  
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-colors duration-200;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Preloader */
+.preloader {
+  @apply fixed inset-0 bg-secondary-dark z-50 flex items-center justify-center transition-opacity duration-500;
+}
+
+.preloader.fade-out {
+  @apply opacity-0 invisible;
+}
+
+.loader {
+  @apply w-12 h-12 border-4 border-gray-300 border-t-primary rounded-full animate-spin;
+}

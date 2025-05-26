@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Placeholder Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #0b3954;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Placeholder Images</h1>
+    
+    <div>
+        <h2>Hero Background (1920x1080)</h2>
+        <canvas id="heroBg" width="1920" height="1080"></canvas>
+        <button onclick="downloadImage('heroBg', 'hero-bg.jpg')">Download hero-bg.jpg</button>
+    </div>
+    
+    <div>
+        <h2>About Image (800x600)</h2>
+        <canvas id="aboutImage" width="800" height="600"></canvas>
+        <button onclick="downloadImage('aboutImage', 'about-image.jpg')">Download about-image.jpg</button>
+    </div>
+    
+    <div>
+        <h2>Stats Background (1920x600)</h2>
+        <canvas id="statsBg" width="1920" height="600"></canvas>
+        <button onclick="downloadImage('statsBg', 'stats-bg.jpg')">Download stats-bg.jpg</button>
+    </div>
+    
+    <div>
+        <h2>CTA Background (1920x600)</h2>
+        <canvas id="ctaBg" width="1920" height="600"></canvas>
+        <button onclick="downloadImage('ctaBg', 'cta-bg.jpg')">Download cta-bg.jpg</button>
+    </div>
+    
+    <div>
+        <h2>Project Images (800x600)</h2>
+        <canvas id="project1" width="800" height="600"></canvas>
+        <button onclick="downloadImage('project1', 'project-1.jpg')">Download project-1.jpg</button>
+        
+        <canvas id="project2" width="800" height="600"></canvas>
+        <button onclick="downloadImage('project2', 'project-2.jpg')">Download project-2.jpg</button>
+        
+        <canvas id="project3" width="800" height="600"></canvas>
+        <button onclick="downloadImage('project3', 'project-3.jpg')">Download project-3.jpg</button>
+        
+        <canvas id="project4" width="800" height="600"></canvas>
+        <button onclick="downloadImage('project4', 'project-4.jpg')">Download project-4.jpg</button>
+    </div>
+    
+    <div>
+        <h2>Testimonial Author Images (200x200)</h2>
+        <canvas id="testimonial1" width="200" height="200"></canvas>
+        <button onclick="downloadImage('testimonial1', 'testimonial-1.jpg')">Download testimonial-1.jpg</button>
+        
+        <canvas id="testimonial2" width="200" height="200"></canvas>
+        <button onclick="downloadImage('testimonial2', 'testimonial-2.jpg')">Download testimonial-2.jpg</button>
+        
+        <canvas id="testimonial3" width="200" height="200"></canvas>
+        <button onclick="downloadImage('testimonial3', 'testimonial-3.jpg')">Download testimonial-3.jpg</button>
+    </div>
+    
+    <button onclick="generateAllImages()">Generate All Images</button>
+    
+    <script>
+        // Generate a gradient background
+        function drawGradientBackground(ctx, width, height, color1, color2) {
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, color1);
+            gradient.addColorStop(1, color2);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+        }
+        
+        // Draw text on canvas
+        function drawText(ctx, text, x, y, fontSize, color) {
+            ctx.font = `${fontSize}px Arial`;
+            ctx.fillStyle = color;
+            ctx.textAlign = 'center';
+            ctx.fillText(text, x, y);
+        }
+        
+        // Draw a simple roof icon
+        function drawRoofIcon(ctx, x, y, size, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(x, y - size/2);
+            ctx.lineTo(x + size/2, y + size/2);
+            ctx.lineTo(x - size/2, y + size/2);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        // Generate hero background
+        function generateHeroBg() {
+            const canvas = document.getElementById('heroBg');
+            const ctx = canvas.getContext('2d');
+            drawGradientBackground(ctx, canvas.width, canvas.height, '#0b3954', '#1d5b7a');
+            
+            // Add some pattern
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+            for (let i = 0; i < 100; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 50 + 20;
+                drawRoofIcon(ctx, x, y, size, 'rgba(255, 255, 255, 0.05)');
+            }
+            
+            drawText(ctx, 'Mendez Roofing', canvas.width/2, canvas.height/2, 100, 'rgba(255, 255, 255, 0.2)');
+        }
+        
+        // Generate about image
+        function generateAboutImage() {
+            const canvas = document.getElementById('aboutImage');
+            const ctx = canvas.getContext('2d');
+            drawGradientBackground(ctx, canvas.width, canvas.height, '#f8f9fa', '#e9ecef');
+            
+            // Draw a simple house with roof
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            
+            // Roof
+            ctx.fillStyle = '#0b3954';
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY - 100);
+            ctx.lineTo(centerX + 150, centerY);
+            ctx.lineTo(centerX - 150, centerY);
+            ctx.closePath();
+            ctx.fill();
+            
+            // House
+            ctx.fillStyle = '#1d5b7a';
+            ctx.fillRect(centerX - 100, centerY, 200, 150);
+            
+            // Door
+            ctx.fillStyle = '#ff6b35';
+            ctx.fillRect(centerX - 25, centerY + 50, 50, 100);
+            
+            // Window
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(centerX + 40, centerY + 30, 40, 40);
+            
+            drawText(ctx, 'About Us', centerX, centerY + 200, 40, '#0b3954');
+        }
+        
+        // Generate stats background
+        function generateStatsBg() {
+            const canvas = document.getElementById('statsBg');
+            const ctx = canvas.getContext('2d');
+            drawGradientBackground(ctx, canvas.width, canvas.height, '#0b3954', '#082c41');
+            
+            // Add pattern
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 2;
+            
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 100 + 50;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.stroke();
+            }
+        }
+        
+        // Generate CTA background
+        function generateCtaBg() {
+            const canvas = document.getElementById('ctaBg');
+            const ctx = canvas.getContext('2d');
+            drawGradientBackground(ctx, canvas.width, canvas.height, '#ff6b35', '#e55a2b');
+            
+            // Add pattern
+            for (let i = 0; i < 200; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 5 + 1;
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            drawText(ctx, 'Ready to Start Your Project?', canvas.width/2, canvas.height/2, 60, 'rgba(255, 255, 255, 0.3)');
+        }
+        
+        // Generate project images
+        function generateProjectImages() {
+            const projects = [
+                {id: 'project1', title: 'Residential Roof', color1: '#0b3954', color2: '#1d5b7a'},
+                {id: 'project2', title: 'Commercial Roof', color1: '#ff6b35', color2: '#e55a2b'},
+                {id: 'project3', title: 'Roof Repair', color1: '#ffd166', color2: '#e6b800'},
+                {id: 'project4', title: 'Metal Roofing', color1: '#343a40', color2: '#495057'}
+            ];
+            
+            projects.forEach((project, index) => {
+                const canvas = document.getElementById(project.id);
+                const ctx = canvas.getContext('2d');
+                drawGradientBackground(ctx, canvas.width, canvas.height, project.color1, project.color2);
+                
+                // Draw a simple roof
+                const centerX = canvas.width / 2;
+                const centerY = canvas.height / 2 - 50;
+                
+                // Roof
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY - 100);
+                ctx.lineTo(centerX + 200, centerY + 50);
+                ctx.lineTo(centerX - 200, centerY + 50);
+                ctx.closePath();
+                ctx.fill();
+                
+                // House
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+                ctx.fillRect(centerX - 150, centerY + 50, 300, 150);
+                
+                drawText(ctx, project.title, centerX, centerY + 250, 40, 'rgba(255, 255, 255, 0.9)');
+                drawText(ctx, 'Project ' + (index + 1), centerX, centerY + 300, 30, 'rgba(255, 255, 255, 0.7)');
+            });
+        }
+        
+        // Generate testimonial author images
+        function generateTestimonialImages() {
+            const testimonials = [
+                {id: 'testimonial1', name: 'Michael'},
+                {id: 'testimonial2', name: 'Sarah'},
+                {id: 'testimonial3', name: 'David'}
+            ];
+            
+            testimonials.forEach((testimonial, index) => {
+                const canvas = document.getElementById(testimonial.id);
+                const ctx = canvas.getContext('2d');
+                
+                // Background
+                ctx.fillStyle = `hsl(${index * 120}, 70%, 80%)`;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Circle for face
+                ctx.fillStyle = '#f8f9fa';
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, canvas.height/2 - 20, 60, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Simple face features
+                ctx.fillStyle = '#343a40';
+                
+                // Eyes
+                ctx.beginPath();
+                ctx.arc(canvas.width/2 - 20, canvas.height/2 - 30, 5, 0, Math.PI * 2);
+                ctx.arc(canvas.width/2 + 20, canvas.height/2 - 30, 5, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Smile
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, canvas.height/2, 30, 0.2 * Math.PI, 0.8 * Math.PI);
+                ctx.stroke();
+                
+                drawText(ctx, testimonial.name, canvas.width/2, canvas.height - 30, 20, '#343a40');
+            });
+        }
+        
+        // Generate all images
+        function generateAllImages() {
+            generateHeroBg();
+            generateAboutImage();
+            generateStatsBg();
+            generateCtaBg();
+            generateProjectImages();
+            generateTestimonialImages();
+        }
+        
+        // Download image
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/jpeg', 0.8);
+            link.click();
+        }
+        
+        // Generate all images on page load
+        window.onload = generateAllImages;
+    </script>
+</body>
+</html>

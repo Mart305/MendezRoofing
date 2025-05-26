@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e55a2b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grad1)" />
+  
+  <!-- Commercial building -->
+  <rect x="200" y="200" width="400" height="200" fill="rgba(255,255,255,0.8)" /> <!-- Main building -->
+  <rect x="200" y="150" width="400" height="50" fill="rgba(255,255,255,0.6)" /> <!-- Roof edge -->
+  
+  <!-- Windows -->
+  <g fill="rgba(255,255,255,0.9)">
+    <rect x="230" y="230" width="40" height="40" />
+    <rect x="290" y="230" width="40" height="40" />
+    <rect x="350" y="230" width="40" height="40" />
+    <rect x="410" y="230" width="40" height="40" />
+    <rect x="470" y="230" width="40" height="40" />
+    
+    <rect x="230" y="290" width="40" height="40" />
+    <rect x="290" y="290" width="40" height="40" />
+    <rect x="350" y="290" width="40" height="40" />
+    <rect x="410" y="290" width="40" height="40" />
+    <rect x="470" y="290" width="40" height="40" />
+    
+    <rect x="350" y="350" width="50" height="50" /> <!-- Door -->
+  </g>
+  
+  <text x="400" y="500" font-family="Arial" font-size="40" text-anchor="middle" fill="rgba(255,255,255,0.9)">Commercial Flat Roof</text>
+  <text x="400" y="550" font-family="Arial" font-size="30" text-anchor="middle" fill="rgba(255,255,255,0.7)">Project 2</text>
+</svg>

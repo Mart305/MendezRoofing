@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="300" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Rectangle -->
+  <rect width="300" height="100" fill="transparent"/>
+  
+  <!-- Roof Icon -->
+  <polygon points="50,40 150,10 250,40 250,60 50,60" fill="#1a5276" stroke="#154360" stroke-width="2"/>
+  
+  <!-- House Base -->
+  <rect x="70" y="60" width="160" height="30" fill="#1a5276" stroke="#154360" stroke-width="2"/>
+  
+  <!-- Company Name -->
+  <text x="150" y="45" font-family="Montserrat, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#ffffff">MENDEZ</text>
+  <text x="150" y="80" font-family="Montserrat, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#ffffff">ROOFING</text>
+  
+  <!-- Accent Line -->
+  <line x1="70" y1="90" x2="230" y2="90" stroke="#e67e22" stroke-width="4"/>
+</svg>
